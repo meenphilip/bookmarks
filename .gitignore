@@ -1,0 +1,7 @@
+# Ignore certificate files
+cert.crt
+cert.key
+
+# Ignore Pipenv files
+Pipfile
+Pipfile.lock

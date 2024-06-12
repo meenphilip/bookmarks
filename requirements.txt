@@ -1,0 +1,13 @@
+django==*
+pillow==*
+asgiref==*
+sqlparse==*
+werkzeug==*
+pyopenssl==*
+requests==*
+django-debug-toolbar==*
+easy-thumbnails==*
+redis==*
+mysqlclient==*
+social-auth-app-django==*
+django-extensions==*
