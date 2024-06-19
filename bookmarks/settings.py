@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +26,10 @@ SECRET_KEY = "django-insecure-7=ny4@c$85&kbrz55sbi7^dzw%gbkc6lq=uun^bx*sch4!7wm5
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+if DEBUG:
+    mimetypes.add_type("application/javascript", ".js", True)
+    mimetypes.add_type("text/css", ".css", True)
 
 ALLOWED_HOSTS = ["mysite.com", "localhost", "127.0.0.1"]
 
