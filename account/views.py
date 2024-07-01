@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -85,3 +86,19 @@ def edit(request):
         profile_form = ProfileEditForm(instance=request.user.profile)
     context = {"user_form": user_form, "profile_form": profile_form}
     return render(request, "account/edit.html", context)
+
+
+# Create list view for user profiles
+@login_required
+def user_list(request):
+    users = User.objects.filter(is_active=True)
+    context = {"section": "people", "users": users}
+    return render(request, "account/user/list.html", context)
+
+
+# Create detail view for user profiles
+@login_required
+def user_detail(request, username):
+    user = get_object_or_404(User, username=username, is_active=True)
+    context = {"section": "people", "user": user}
+    return render(request, "account/user/detail.html", context)

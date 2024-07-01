@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import mimetypes
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -56,6 +57,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Cononical URL
+ABSOLUTE_URL_OVERRIDES = {
+    "auth.user": lambda u: reverse_lazy("user_detail", args=[u.username])
+}
 
 # Application definition
 INSTALLED_APPS = [
