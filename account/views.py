@@ -9,6 +9,7 @@ from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditFor
 from .models import Profile, Contact
 from django.contrib import messages
 from actions.utils import create_action
+from actions.models import Action
 
 
 # login View
@@ -44,7 +45,15 @@ def user_logout(request):
 # Authourized users only
 @login_required
 def dashboard(request):
-    context = {"section": "dashboard"}
+    # Display all actions by default
+    actions = Action.objects.exclude(user=request.user)
+    following_ids = request.user.following.values_list("id", flat=True)
+
+    if following_ids:
+        # If user is following others, retrieve only their actions
+        actions = actions.filter(user_id__in=following_ids)
+    actions = actions[:10]
+    context = {"section": "dashboard", "actions": actions}
     return render(request, "account/dashboard.html", context)
 
 
