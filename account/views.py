@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile, Contact
 from django.contrib import messages
+from actions.utils import create_action
 
 
 # login View
@@ -60,6 +61,7 @@ def user_register(request):
             new_user.save()
             # create the user profile
             Profile.objects.create(user=new_user)
+            create_action(new_user, "has created an account")
             context = {"new_user": new_user}
             return render(request, "account/register_done.html", context)
     else:
@@ -117,6 +119,7 @@ def user_follow(request):
             user = User.objects.get(id=user_id)
             if action == "follow":
                 Contact.objects.get_or_create(user_from=request.user, user_to=user)
+                create_action(request.user, "is following", user)
             else:
                 Contact.objects.filter(user_from=request.user, user_to=user).delete()
             return JsonResponse({"status": "ok"})
