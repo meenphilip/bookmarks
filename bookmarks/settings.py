@@ -58,6 +58,11 @@ EMAIL_USE_TLS = True
 
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# Redis settings
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379
+REDIS_DB = 0
+
 # Cononical URL
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda u: reverse_lazy("user_detail", args=[u.username])
