@@ -2,7 +2,18 @@
 
 ## Project Description
 
-In this project, you will create a website to bookmark and share images. The preceding chapter covered implementing a tagging system and recommending similar posts. You learned to implement custom template tags and filters, create sitemaps and feeds for your site, and build a full-text search engine using MySQL.
+In this project, I will create a website to bookmark and share images. The website will feature robust authentication using the Django authentication framework and will extend the user model with custom profiles. I'll leverage the Django messages framework for user notifications and build a custom authentication backend.
+
+For social authentication, I'll integrate OAuth2 with Facebook, Twitter, and Google using Python Social Auth. I'll use django-extensions to run the development server through HTTPS and generate image thumbnails with easy-thumbnails. The project will include implementing many-to-many relationships in models.
+
+I will also build a JavaScript bookmarklet to enable users to easily bookmark images directly from their browsers. The site will support asynchronous HTTP requests using the JavaScript Fetch API and Django, and will feature infinite scroll pagination for a seamless user experience.
+
+Additionally, I'll implement a user follow system and create a user activity stream while optimizing QuerySets for performance. I'll learn to use Django signals for decoupled event handling and utilize django-debug-toolbar to obtain relevant debug information.
+
+To enhance the site's functionality, I'll count image views and build an image ranking system using Redis. This project aims to deliver a comprehensive image bookmarking and sharing platform with a rich set of features.
+
+
+![Screenshot 4](screenshots/Screenshot-4.png)
 
 ## Table of Contents
 
@@ -13,6 +24,7 @@ In this project, you will create a website to bookmark and share images. The pre
   - [Create a website to bookmark and share images](#create-a-website-to-bookmark-and-share-images)
   - [Installation](#installation)
   - [Screenshots](#screenshots)
+  - [Credits](#credits)
 
 ## Features
 ## Create a website to bookmark and share images
@@ -42,18 +54,35 @@ To install this project, follow these steps:
 
 1. Clone the repository: 
    ```bash
-   git clone https://github.com/yourusername/yourproject.git
-2. Navigate to the project directory: `cd yourproject`
-3. Create a virtual environment: `python3 -m venv env`
+   git clone https://github.com/meenphilip/bookmarks.git
+2. Navigate to the project directory: 
+    ``` bash 
+    cd bookmarks
+3. Install the required packages: 
+   ```bash
+   pipenv install -r requirements.txt
 4. Activate the virtual environment:
-   - On Windows: `.\env\Scripts\activate`
-   - On macOS/Linux: `source env/bin/activate`
-5. Install the required packages: `pip install -r requirements.txt`
-6. Set up the database: `python manage.py migrate`
-7. Create a superuser: `python manage.py createsuperuser`
-8. Run the development server: `python manage.py runserver`
+    ```bash
+    pipenv shell
+5. Set up the database: 
+   ```bash
+   python manage.py migrate
+6. Create a superuser: 
+   ```bash
+   python manage.py createsuperuser
+7.  Run the development server: 
+   ```
+   python manage.py runserver 
+   ```
 
 ## Screenshots
+![Screenshot 1](screenshots/Screenshot-1.png)
+![Screenshot 2](screenshots/Screenshot-2.png)
+![Screenshot 3](screenshots/Screenshot-3.png)
 
-![Screenshot 1](path/to/screenshot1.png)
-![Screenshot 2](path/to/screenshot2.png)
+---
+
+## Credits
+
+- **Book Credit**: This project was developed following examples from [Django 4 by Example](https://www.packtpub.com/product/django-4-by-example/9781801077938) by Antonio Mele.
+
