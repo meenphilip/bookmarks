@@ -84,5 +84,5 @@ To install this project, follow these steps:
 
 ## Credits
 
-- **Book Credit**: This project was developed following examples from [Django 4 by Example](https://www.packtpub.com/product/django-4-by-example/9781801077938) by Antonio Mele.
+- **Book Credit**: This project was developed following examples from [Django 4 by Example](https://www.packtpub.com/en-us/product/django-4-by-example-9781801813051) by Antonio Mele.
 
